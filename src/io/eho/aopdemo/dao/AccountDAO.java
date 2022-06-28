@@ -1,5 +1,8 @@
 package io.eho.aopdemo.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import io.eho.aopdemo.Account;
@@ -19,15 +22,22 @@ public class AccountDAO {
 		System.out.println(getClass() + ": in setName()");
 		this.name = name;
 	}
-
-	public String getServiceCode() {
-		System.out.println(getClass() + ": in getServiceCode()");
-		return serviceCode;
-	}
-
-	public void setServiceCode(String serviceCode) {
-		System.out.println(getClass() + ": in setServiceCode()");
-		this.serviceCode = serviceCode;
+	
+	public List<Account> findAccounts() {
+		
+		List<Account> accounts = new ArrayList<>();
+		
+		// create sample accounts
+		Account a1 = new Account("Erik", "Silver");
+		Account a2 = new Account("Luca", "Gold");
+		Account a3 = new Account("Madhu", "Platinum");
+		
+		// add accounts to list
+		accounts.add(a1);
+		accounts.add(a2);
+		accounts.add(a3);
+		
+		return accounts;
 	}
 
 	public void addAccount(Account account, boolean vipFlag) {
@@ -41,6 +51,15 @@ public class AccountDAO {
 		
 		return true;
 	}
-	
+
+	public String getServiceCode() {
+		System.out.println(getClass() + ": in getServiceCode()");
+		return serviceCode;
+	}
+
+	public void setServiceCode(String serviceCode) {
+		System.out.println(getClass() + ": in setServiceCode()");
+		this.serviceCode = serviceCode;
+	}
 
 }
